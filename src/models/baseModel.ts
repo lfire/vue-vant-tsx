@@ -1,13 +1,15 @@
-import { Module,VuexModule, Mutation, Action } from 'vuex-module-decorators'
+import { Module, VuexModule, Mutation, Action } from 'vuex-module-decorators';
 
+export type TUserInfo = {
+  username: string;
+  password: string;
+};
 
-export default class BaseModel extends VuexModule{
+export default class BaseModel extends VuexModule {
+  protected userInfo?: TUserInfo = { username: '', password: '' };
 
-	protected userInfo?:any={username:'',password:''}
-
-	@Mutation
-	setUserInfo(userInfo:any){
-		this.userInfo = userInfo;
-	}
-	
+  @Mutation
+  setUserInfo(userInfo: TUserInfo) {
+    this.userInfo = userInfo;
+  }
 }

@@ -1,6 +1,7 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 import CommonModel from '@/models';
-export default new Vuex.Store<any>(CommonModel)
+export default new Vuex.Store<any>(CommonModel);
+// export default new Vuex.Store(CommonModel);

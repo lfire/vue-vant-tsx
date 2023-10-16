@@ -1,32 +1,32 @@
-import { Module,VuexModule, Mutation, Action ,getModule,MutationAction} from 'vuex-module-decorators'
-import BaseModule from './baseModel';
+import { Module, VuexModule, Mutation, Action, getModule, MutationAction } from 'vuex-module-decorators';
+import BaseModule, { TUserInfo } from './baseModel';
 
 @Module({
-	name:'base'
+  name: 'base',
 })
-export default class CommonModel extends BaseModule{
+export default class CommonModel extends BaseModule {
+  // eslint-disable-next-line no-undef
+  [propName: string]: any;
+  conferences = [];
+  events = [];
 
-	[propName:string]:any
-	conferences: Array<any> = []
-	events: Array<any> = []
+  private test?: string = 'aaa';
 
-	private test?:string = 'aaa';
+  get getTest() {
+    return this.test;
+  }
 
-	get getTest(){
-		return this.test;
-	}
+  @Mutation
+  setTest(test: string) {
+    this.test = test;
+  }
+  @MutationAction({ mutate: ['events', 'conferences'] })
+  public async commitSetUserInfo(arg: TUserInfo) {
+    this.context.commit('setUserInfo', arg);
+    return { events: [], conferences: [], test: 'bbb' };
+  }
 
-	@Mutation
-	setTest(test:string){
-		this.test = test;
-	}
-	@MutationAction({ mutate: ['events', 'conferences'] })
-	public async commitSetUserInfo(arg:any){
-		this.commit('setUserInfo',arg)
-		return {events:[],conferences:[]}
-	}
-
-	get getUserInfo(){
-		return this.userInfo;
-	}
+  get getUserInfo() {
+    return this.userInfo;
+  }
 }

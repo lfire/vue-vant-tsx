@@ -1,77 +1,73 @@
-import { Module,VuexModule, Mutation, Action ,getModule} from 'vuex-module-decorators'
+import { Module, VuexModule, Mutation, Action, getModule } from 'vuex-module-decorators';
 import store from '@/store';
 import router from '@/router';
 import { getLogin } from '@/apis/login/loginApi';
 import BaseModel from '@/models/baseModel';
 import CommonModel from '@/models';
-const commonModel = getModule(CommonModel,store);
+const commonModel = getModule(CommonModel, store);
 @Module({
-	name: 'login',
-	namespaced: true,
-	stateFactory: true,
-	dynamic: true,
-	store
+  name: 'login',
+  namespaced: true,
+  stateFactory: true,
+  dynamic: true,
+  store,
 })
-export default class LoginModel extends BaseModel{
+export default class LoginModel extends BaseModel {
+  protected formData?: any = { username: 'c', password: 'd' };
 
-	protected formData?:any={username:'c',password:'d'};
+  protected username?: string = 'admin';
 
-	protected username?:string = 'admin';
+  protected password?: string = '123456';
 
-	protected password?:string = '123456';
+  protected loading?: boolean = false;
 
-	protected loading?:boolean = false;
+  protected loadingText?: string = '提交中';
 
-	protected loadingText?:string = '提交中';
+  get getFormData() {
+    return this.formData;
+  }
 
+  @Mutation
+  setFormData(formData: any) {
+    this.formData = formData;
+  }
 
-	get getFormData(){
-		return this.formData;
-	}
+  get getUsername() {
+    return this.username;
+  }
 
-	@Mutation
-	setFormData(formData:any){
-		this.formData = formData;
-	}
+  @Mutation
+  setUsername(username: string) {
+    this.username = username;
+  }
 
-	get getUsername(){
-		return this.username;
-	}
+  get getPassword() {
+    return this.password;
+  }
 
-	@Mutation
-	setUsername(username:string){
-		this.username = username;
-	}
+  @Mutation
+  setPassword(password: string) {
+    this.password = password;
+  }
 
-	get getPassword(){
-		return this.password;
-	}
+  @Mutation
+  setLoading(loading: boolean) {
+    this.loading = loading;
+  }
 
-	@Mutation
-	setPassword(password:string){
-		this.password = password;
-	}
+  @Action
+  async getLogin() {
+    this.setLoading(true);
+    let res = await getLogin({
+      username: this.getUsername,
+      password: this.getPassword,
+    });
+    this.setLoading(false);
 
-	@Mutation
-	setLoading(loading:boolean){
-		this.loading = loading;
-	}
-
-	@Action
-	async getLogin(){
-
-		this.setLoading(true);
-		let res = await getLogin({
-			username:this.getUsername,
-			password:this.getPassword
-		})
-		this.setLoading(false);
-
-		if(res.data.ret == 0){
-			commonModel.setTest('bbb');
-			commonModel.setUserInfo(res.data.data);
-			router.push('/')
-		}
-
-	}
+    if (res.data.ret === 0) {
+      commonModel.setTest('bbb');
+      commonModel.setUserInfo(res.data.data);
+      router.push('/');
+    }
+  }
 }

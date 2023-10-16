@@ -1,14 +1,14 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
 import Index from '../pages/index/Index';
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
     path: '/',
     name: 'index',
-    component: Index
+    component: Index,
   },
   {
     path: '/login',
@@ -16,14 +16,14 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "login" */ '../pages/login/Login')
-  }
-]
+    component: () => import(/* webpackChunkName: "login" */ '../pages/login/Login'),
+  },
+];
 
 const router = new VueRouter({
   mode: 'hash',
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;
