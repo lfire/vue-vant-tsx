@@ -3,11 +3,11 @@ module.exports = {
   env: {
     node: true,
   },
+  plugins: ['@typescript-eslint'],
   extends: [
     // 'plugin:vue/essential',
     // 'eslint:recommended',
     // '@vue/typescript'
-    'plugin:@typescript-eslint/recommended', // 引入相关插件
     'plugin:prettier/recommended',
     'prettier/vue', // 禁用插件中与 Prettier 冲突的规则
     // "prettier/@typescript-eslint", // 禁用插件中与 Prettier 冲突的规则
@@ -107,38 +107,45 @@ module.exports = {
     ],
     // "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
     // "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
-    '@typescript-eslint/no-explicit-any': 'off',
     'no-unused-vars': 'off',
-    '@typescript-eslint/no-unused-vars': 'off',
   },
-  // parserOptions: {
-  //   parser: "@typescript-eslint/parser",
-  // },
   parser: 'vue-eslint-parser',
   parserOptions: {
+    tsconfigRootDir: __dirname,
     // parser: "@typescript-eslint/parser",
     ecmaVersion: 2020,
     sourceType: 'module',
-    // project: './tsconfig.json',
-    parser: {
-      js: '@babel/eslint-parser',
-      jsx: '@babel/eslint-parser',
+    // project: ['tsconfig.json'],
+    // parser: {
+    //   js: '@babel/eslint-parser',
+    //   jsx: '@babel/eslint-parser',
 
-      ts: '@typescript-eslint/parser',
-      tsx: '@typescript-eslint/parser',
-    },
+    //   ts: '@typescript-eslint/parser',
+    //   tsx: '@typescript-eslint/parser',
+    // },
   },
-  // overrides: [
-  //   {
-  //     files: ["*.ts", "*.tsx"],
-  //     parser: "@typescript-eslint/parser",
-  //     parserOptions: {
-  //       project: "./tsconfig.json",
-  //     },
-  //   },
-  //   {
-  //     files: ["*.js", "*.jsx"],
-  //     parser: "@babel/eslint-parser",
-  //   },
-  // ],
+  overrides: [
+    {
+      files: ['*.ts', '*.tsx'],
+      parser: '@typescript-eslint/parser',
+      parserOptions: {
+        project: ['tsconfig.json'],
+      },
+      extends: [
+        'plugin:@typescript-eslint/recommended', // 引入相关插件
+        'alloy/typescript',
+      ],
+      rules: {
+        '@typescript-eslint/no-explicit-any': 'off',
+        '@typescript-eslint/no-unused-vars': 'off',
+        '@typescript-eslint/no-duplicate-imports': 'off',
+        '@typescript-eslint/no-parameter-properties': 'off',
+      },
+    },
+    {
+      files: ['*.js', '*.jsx'],
+      parser: '@babel/eslint-parser',
+    },
+  ],
+  ignorePatterns: ['node_modules', 'dist'],
 };

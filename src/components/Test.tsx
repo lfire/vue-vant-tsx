@@ -12,27 +12,29 @@ export default class Test extends Vue {
   private test?: string;
 
   @Emit('cc')
-  sendValue(val: string) {}
+  public sendValue(val: string) {}
 
   @Emit('update:test')
-  updateTest(val: string) {}
+  public updateTest(val: string) {}
 
   @Emit('change')
-  change(val: string) {}
+  public change(val: string) {}
+
   @Watch('msg')
-  watchMsg(newVal: string, oldVal: string) {
+  public watchMsg(newVal: string, oldVal: string) {
     console.log(oldVal, newVal);
   }
 
-  get computedMsg() {
+  public get computedMsg() {
     return 'msg:' + this.msg;
   }
-  handleClick(event: MouseEvent) {
+
+  public handleClick(event: MouseEvent) {
     this.sendValue('lalala');
     this.change('成功');
     this.updateTest('chenggong1');
   }
-  render() {
+  public render() {
     return (
       <div>
         msg:{this.msg}

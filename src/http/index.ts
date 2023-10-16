@@ -2,7 +2,7 @@
 import axios from 'axios';
 import { Notify } from 'vant';
 // 开发域名
-let devPath: string = '/';
+let devPath = '/';
 // 生产域名
 
 axios.defaults.baseURL = devPath;

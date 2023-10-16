@@ -3,20 +3,20 @@ import Test from '@/components/Test';
 import { State, Mutation, Getter, Action, namespace } from 'vuex-class';
 @Component
 export default class Index extends Vue {
+  @State('test') protected testState?: any;
+
+  @Getter('getUserInfo') protected getUserInfo?: any;
+
   private name?: string = 'hello-index';
 
   private value?: string = 'haha';
 
   private test?: string = 'testsync';
 
-  @State('test') testState?: any;
-
-  @Getter('getUserInfo') getUserInfo?: any;
-
-  handleChange(msg: any) {
+  public handleChange(msg: any) {
     console.log(msg);
   }
-  render() {
+  public render() {
     return (
       <div>
         {this.testState}

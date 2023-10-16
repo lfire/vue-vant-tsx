@@ -13,18 +13,19 @@ module.exports = {
       }
       config.plugins.delete('prefetch');
     }
-    config.module
-      .rule('js')
-      .exclude.clear()
-      .add(/node_modules/);
-    config.module.rules.store.forEach((rule) => {
-      console.log(rule.toString(), rule.store);
-    });
+    // config.module
+    //   .rule('js')
+    //   .exclude.clear()
+    //   .add(/node_modules/);
+    // config.module.rules.delete('mjs');
+    // config.module.rules.store.forEach((rule) => {
+    //   console.log(rule.toString(), rule.name, rule.store);
+    // });
   },
   configureWebpack: (config) => {
-    config.stats = {
-      errorDetails: true,
-    };
+    // config.stats = {
+    //   errorDetails: true,
+    // };
     if (process.env.NODE_ENV === 'production') {
       return {
         plugins: [

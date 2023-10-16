@@ -23,40 +23,40 @@ export default class LoginModel extends BaseModel {
 
   protected loadingText?: string = '提交中';
 
-  get getFormData() {
+  public get getFormData() {
     return this.formData;
   }
 
   @Mutation
-  setFormData(formData: any) {
+  public setFormData(formData: any) {
     this.formData = formData;
   }
 
-  get getUsername() {
+  public get getUsername() {
     return this.username;
   }
 
   @Mutation
-  setUsername(username: string) {
+  public setUsername(username: string) {
     this.username = username;
   }
 
-  get getPassword() {
+  public get getPassword() {
     return this.password;
   }
 
   @Mutation
-  setPassword(password: string) {
+  public setPassword(password: string) {
     this.password = password;
   }
 
   @Mutation
-  setLoading(loading: boolean) {
+  public setLoading(loading: boolean) {
     this.loading = loading;
   }
 
   @Action
-  async getLogin() {
+  public async getLogin() {
     this.setLoading(true);
     let res = await getLogin({
       username: this.getUsername,

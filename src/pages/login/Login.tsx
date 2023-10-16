@@ -6,48 +6,48 @@ import { State, Getter, Action, Mutation, namespace } from 'vuex-class';
 const LoginModule = namespace('login');
 @Component
 export default class Login extends Vue {
-  @LoginModule.Getter('getUsername') getUsername: any;
-  @LoginModule.Mutation('setUsername') setUsername: any;
-  @LoginModule.Getter('getPassword') getPassword: any;
-  @LoginModule.Mutation('setPassword') setPassword: any;
-  @LoginModule.Getter('getFormData') getFormData: any;
-  @LoginModule.Mutation('setFormData') setFormData: any;
-  @LoginModule.Action('getLogin') getLogin: any;
-  @LoginModule.State('loading') loading: any;
-  @LoginModule.State('loadingText') loadingText: any;
-  @State('test') test: any;
-  @Mutation('setUserInfo') setUserInfo: any;
-  @Getter('getUserInfo') getUserInfo: any;
-  @Action('commitSetUserInfo') commitSetUserInfo: any;
-  created() {
+  @LoginModule.Getter('getUsername') protected getUsername: any;
+  @LoginModule.Mutation('setUsername') protected setUsername: any;
+  @LoginModule.Getter('getPassword') protected getPassword: any;
+  @LoginModule.Mutation('setPassword') protected setPassword: any;
+  @LoginModule.Getter('getFormData') protected getFormData: any;
+  @LoginModule.Mutation('setFormData') protected setFormData: any;
+  @LoginModule.Action('getLogin') protected getLogin: any;
+  @LoginModule.State('loading') protected loading: any;
+  @LoginModule.State('loadingText') protected loadingText: any;
+  @State('test') protected test: any;
+  @Mutation('setUserInfo') protected setUserInfo: any;
+  @Getter('getUserInfo') protected getUserInfo: any;
+  @Action('commitSetUserInfo') protected commitSetUserInfo: any;
+  public created() {
     console.log(this);
   }
 
-  get username() {
+  public get username() {
     return this.getUsername;
   }
-  set username(username: string) {
+  public set username(username: string) {
     this.setUsername(username);
   }
 
-  get password() {
+  public get password() {
     return this.getPassword;
   }
-  set password(password: string) {
+  public set password(password: string) {
     this.setPassword(password);
   }
-  set formData(formData: any) {
+  public set formData(formData: any) {
     this.setFormData(formData);
   }
-  get formData() {
+  public get formData() {
     return this.getFormData;
   }
 
-  async handleSub() {
+  public async handleSub() {
     await this.commitSetUserInfo({ username: 'a', password: 'b' });
     await this.getLogin();
   }
-  render() {
+  public render() {
     return (
       <div class={style['router-pages']}>
         {this.test}

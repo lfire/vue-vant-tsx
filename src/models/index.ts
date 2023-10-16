@@ -7,17 +7,17 @@ import BaseModule, { TUserInfo } from './baseModel';
 export default class CommonModel extends BaseModule {
   // eslint-disable-next-line no-undef
   [propName: string]: any;
-  conferences = [];
-  events = [];
+  public conferences = [];
+  public events = [];
 
   private test?: string = 'aaa';
 
-  get getTest() {
+  public get getTest() {
     return this.test;
   }
 
   @Mutation
-  setTest(test: string) {
+  public setTest(test: string) {
     this.test = test;
   }
   @MutationAction({ mutate: ['events', 'conferences'] })
@@ -26,7 +26,7 @@ export default class CommonModel extends BaseModule {
     return { events: [], conferences: [], test: 'bbb' };
   }
 
-  get getUserInfo() {
+  public get getUserInfo() {
     return this.userInfo;
   }
 }
