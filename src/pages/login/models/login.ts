@@ -58,7 +58,7 @@ export default class LoginModel extends BaseModel {
   @Action
   public async getLogin() {
     this.setLoading(true);
-    let res = await getLogin({
+    const res = await getLogin({
       username: this.getUsername,
       password: this.getPassword,
     });

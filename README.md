@@ -1,6 +1,6 @@
 # vue-vant-tsx
 
-> Tips: This project need run with node 14.x and python v2.x
+> Tips: This project need run with node 16.x and python v3.x
 
 ## Project setup
 

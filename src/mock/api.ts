@@ -1,6 +1,6 @@
 import { Mock, returnFunc } from './mock';
 Mock.mock('/login', (options: any) => {
-  let data = options.body;
+  const data = options.body;
   if (data.username === 'admin' && data.password === '123456') {
     return returnFunc({
       ret: 0,
