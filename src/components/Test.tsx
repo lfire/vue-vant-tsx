@@ -7,15 +7,16 @@ import * as tsx from 'vue-tsx-support';
   },
 })
 export default class Test extends Vue {
-  public _tsx!: tsx.DeclareProps<tsx.AutoProps<Test>>;
+  // public _tsx!: tsx.DeclareProps<tsx.AutoProps<Test>>;
+  public _tsx!: tsx.DeclareProps<tsx.AutoProps<Test>> & tsx.DeclareOnEvents<{ onChange: string; cc: string }>;
   // public _tsx!: tsx.DeclareProps<tsx.PickProps<Test, 'msg' | 'value' | 'test'>>;
 
   @Prop({ required: false, default: '' })
   public msg?: string;
 
   @Model('cc')
-  @Prop({ required: false, default: 'abcd' })
-  public value?: string;
+  @Prop({ required: true, default: 'abcd' })
+  public value: string;
 
   @Prop({ required: false, default: '' })
   public test?: string;
@@ -58,7 +59,10 @@ export default class Test extends Vue {
         <br />
         value:{this.value}
         <br />
+        <br />
         test:{this.test}
+        <br />
+        <br />
         <button onClick={this.handleClick}>点我</button>
       </div>
     );

@@ -13,7 +13,7 @@ export default class Index extends Vue {
   public name?: string = 'hello-index';
   public count = 0;
 
-  public value?: string = 'haha';
+  public value = 'haha';
 
   public test?: string = 'testsync';
 
@@ -41,13 +41,14 @@ export default class Index extends Vue {
         <Test
           test={this.test}
           msg={this.name}
-          // change={this.handleChange}
+          value={this.value}
+          onChange={this.handleChange}
           {...{
             on: {
-              change: (res: any) => {
-                console.log('change on Index.tsx, get value:', res);
-                this.handleChange(res);
-              },
+              // change: (res: any) => {
+              //   console.log('change on Index.tsx, get value:', res);
+              //   this.handleChange(res);
+              // },
               'update:test': (res: any) => {
                 console.log('update:test on Index.tsx, get value:', res);
                 this.test = res;
@@ -55,7 +56,8 @@ export default class Index extends Vue {
             },
           }}
           v-model={this.value}
-        ></Test>
+        />
+        <hr />
         {this.value}
         <br />
         {this.test}
