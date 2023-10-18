@@ -3,6 +3,11 @@ import Test from '@/components/Test';
 import TestTpl from '@/components/TestTpl.vue';
 import { State, Mutation, Getter, Action, namespace } from 'vuex-class';
 import * as tsx from 'vue-tsx-support';
+import { Button as VButton } from 'vant';
+import { comPropsConvert } from '@/plugins/propsConvert';
+
+const Button = comPropsConvert(VButton);
+
 @Component({
   components: {
     TestTpl,
@@ -61,6 +66,13 @@ export default class Index extends Vue {
         {this.value}
         <br />
         {this.test}
+        <br />
+        <br />
+        Vant Button:: {this.count}
+        <br />
+        <Button type="primary" size="small" onClick={() => this.count++}>
+          Plus
+        </Button>
         <br />
       </div>
     );
