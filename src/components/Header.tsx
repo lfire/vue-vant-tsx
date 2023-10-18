@@ -7,24 +7,24 @@ interface User {
 }
 @Component
 export default class Header extends Vue {
-  // public _tsx!: tsx.DeclareProps<tsx.AutoProps<Header>>;
-  public _tsx!: tsx.DeclareProps<tsx.PickProps<Header, 'title' | 'author'>>;
+  public _tsx!: tsx.DeclareProps<tsx.AutoProps<Header>>;
+  // public _tsx!: tsx.DeclareProps<tsx.PickProps<Header, 'title' | 'author'>>;
 
-  @Prop({ type: String, default: '标题' }) public readonly title?: string;
+  @Prop({ type: String, default: '标题' }) public readonly title: string;
   @Prop({ type: Object, default: () => ({ name: '-', age: '-' }) }) public readonly author!: User;
 
-  public goAboutMe() {
+  protected goAbout() {
     this.$router.push('/about');
   }
 
-  public render() {
+  protected render() {
     return (
       <div class={styles.header}>
         <div class={styles.title}>
           <h1>{this.title}</h1>
-          <span onClick={this.goAboutMe}>
+          <span onClick={this.goAbout}>
             作者：
-            <span>{this.author.name}</span>
+            <span>{this.author.name}</span> of <span>{this.author.age}</span>
           </span>
         </div>
       </div>

@@ -29,8 +29,8 @@
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "node_modules/vue-tsx-support/enable-check.d.ts",
-    "src/shims-tsx.d.ts-bak" // "tests/**/*.ts",
+    "node_modules/vue-tsx-support/enable-check.d.ts"
+    // "tests/**/*.ts",
     // "tests/**/*.tsx"
   ]
 }
