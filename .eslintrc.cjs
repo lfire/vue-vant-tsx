@@ -108,6 +108,13 @@ module.exports = {
     // "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
     // "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
     'no-unused-vars': 'off',
+    'vue/component-tags-order': [
+      'error',
+      {
+        order: ['template', 'script', 'style'],
+        // order: [['script', 'template'], 'style'],
+      },
+    ],
   },
   parser: 'vue-eslint-parser',
   parserOptions: {
@@ -115,6 +122,10 @@ module.exports = {
     // parser: "@typescript-eslint/parser",
     ecmaVersion: 2020,
     sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
+      legacyDecorators: true,
+    },
     // project: ['tsconfig.json'],
     // parser: {
     //   js: '@babel/eslint-parser',

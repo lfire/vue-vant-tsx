@@ -7,6 +7,7 @@ module.exports = {
   transpileDependencies: ['vuex-module-decorators'],
   chainWebpack: (config) => {
     config.resolve.alias.set('tslib', 'tslib/tslib.es6.js');
+    config.resolve.extensions.add('.vue');
     if (process.env.NODE_ENV === 'production') {
       if (process.env.npm_config_report) {
         config.plugin('webpack-bundle-analyzer').use(require('webpack-bundle-analyzer').BundleAnalyzerPlugin);

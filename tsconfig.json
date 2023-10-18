@@ -1,30 +1,36 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "strict": true,
-    "jsx": "preserve",
-    "importHelpers": true,
-    "moduleResolution": "node",
-    "experimentalDecorators": true,
-    "strictFunctionTypes": false,
-    "strictPropertyInitialization": false,
-    "esModuleInterop": true,
+    "allowJs": true,
     "allowSyntheticDefaultImports": true,
-    "sourceMap": true,
     "baseUrl": ".",
-    "types": ["webpack-env"],
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "jsx": "preserve",
+    "jsxFactory": "VueTsxSupport",
+    "lib": ["ESNext", "dom", "dom.iterable", "scripthost"],
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "outDir": "./dist/",
     "paths": {
       "@/*": ["src/*"]
     },
-    "lib": ["ESNext", "dom", "dom.iterable", "scripthost"]
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "strictFunctionTypes": false,
+    "strictPropertyInitialization": false,
+    "target": "ESNext",
+    "types": ["webpack-env"]
   },
+  "exclude": ["node_modules"],
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "tests/**/*.ts",
-    "tests/**/*.tsx"
-  ],
-  "exclude": ["node_modules"]
+    "node_modules/vue-tsx-support/enable-check.d.ts",
+    "src/shims-tsx.d.ts-bak" // "tests/**/*.ts",
+    // "tests/**/*.tsx"
+  ]
 }
