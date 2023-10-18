@@ -64,6 +64,10 @@ export default class Test extends Vue {
         <br />
         <br />
         <button onClick={this.handleClick}>点我</button>
+        <hr />
+        sub coms, witch is a vue template componet:
+        {/* @ts-ignore */}
+        <TestTpl />
       </div>
     );
   }

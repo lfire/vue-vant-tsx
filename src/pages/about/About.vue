@@ -3,7 +3,7 @@
     about
     <div><router-link to="/">Go to Index</router-link></div>
     <hr />
-    <TestTpl></TestTpl>
+    <TestTpl />
   </div>
 </template>
 
