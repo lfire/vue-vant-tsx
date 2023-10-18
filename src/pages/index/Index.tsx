@@ -5,6 +5,7 @@ import { State, Mutation, Getter, Action, namespace } from 'vuex-class';
 import * as tsx from 'vue-tsx-support';
 import { Button as VButton } from 'vant';
 import { comPropsConvert } from '@/plugins/propsConvert';
+import { Log } from '@/plugins/decorator';
 
 const Button = comPropsConvert(VButton);
 
@@ -26,6 +27,7 @@ export default class Index extends Vue {
 
   @Getter('getUserInfo') protected getUserInfo?: any;
 
+  @Log
   public handleChange(msg: any) {
     console.log('handle change emit', msg);
   }
