@@ -27,6 +27,29 @@ export default class Index extends Vue {
   public handleChange(msg: any) {
     console.log('handle change emit', msg);
   }
+  public renderTest() {
+    return (
+      <Test
+        test={this.test}
+        msg={this.name}
+        value={this.value}
+        onChange={this.handleChange}
+        {...{
+          on: {
+            // change: (res: any) => {
+            //   console.log('change on Index.tsx, get value:', res);
+            //   this.handleChange(res);
+            // },
+            'update:test': (res: any) => {
+              console.log('update:test on Index.tsx, get value:', res);
+              this.test = res;
+            },
+          },
+        }}
+        v-model={this.value}
+      />
+    );
+  }
   public render() {
     return (
       <div>
@@ -41,25 +64,7 @@ export default class Index extends Vue {
           {this.name}
           <input v-model={this.name} />
           <hr />
-          <Test
-            test={this.test}
-            msg={this.name}
-            value={this.value}
-            onChange={this.handleChange}
-            {...{
-              on: {
-                // change: (res: any) => {
-                //   console.log('change on Index.tsx, get value:', res);
-                //   this.handleChange(res);
-                // },
-                'update:test': (res: any) => {
-                  console.log('update:test on Index.tsx, get value:', res);
-                  this.test = res;
-                },
-              },
-            }}
-            v-model={this.value}
-          />
+          {this.renderTest()}
           <hr />
           {this.value}
           <br />
