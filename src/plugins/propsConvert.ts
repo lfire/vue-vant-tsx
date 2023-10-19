@@ -1,4 +1,5 @@
 import { ofType } from 'vue-tsx-support';
+import Vue from 'vue';
 
 type PowerPartial<T> = {
   // 如果是 object，则递归类型
