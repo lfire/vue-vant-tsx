@@ -5,6 +5,7 @@ import router from './router';
 import store from './store';
 import '@/mock';
 import '@/plugins/vant';
+import '@/plugins/fragment';
 // class-component-hooks.js
 import Component from 'vue-class-component';
 

@@ -6,6 +6,7 @@ import * as tsx from 'vue-tsx-support';
 import { Button as VButton } from 'vant';
 import { comPropsConvert } from '@/plugins/propsConvert';
 import { Log } from '@/plugins/decorator';
+import { Fragment } from 'vue-fragment';
 
 const Button = comPropsConvert(VButton);
 
@@ -64,7 +65,7 @@ export default class Index extends Vue {
           input v-model test (current value: {this.name})::
           <input v-model={this.name} />
           <hr />
-          {this.renderTest()}
+          <fragment>{this.renderTest()}</fragment>
           <hr />
           {this.value}
           <br />
