@@ -52,7 +52,7 @@ export default class Index extends Vue {
   }
   public render() {
     return (
-      <div>
+      <div style="padding: 10px;">
         <Header title={'Index Page'} author={{ name: '王五', age: 25 }} />
         <div>
           {this.testState}
@@ -61,7 +61,7 @@ export default class Index extends Vue {
           <br />
           {this.getUserInfo.password}
           <br />
-          {this.name}
+          input v-model test (current value: {this.name})::
           <input v-model={this.name} />
           <hr />
           {this.renderTest()}
