@@ -24,6 +24,7 @@ module.exports = {
     // });
   },
   configureWebpack: (config) => {
+    config.entry = './src/main.js';
     // config.stats = {
     //   errorDetails: true,
     // };

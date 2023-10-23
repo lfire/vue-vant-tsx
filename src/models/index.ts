@@ -10,7 +10,7 @@ export default class CommonModel extends BaseModule {
   public conferences = [];
   public events = [];
 
-  private test?: string = 'aaa';
+  public test?: string = 'aaa';
 
   public get getTest() {
     return this.test;

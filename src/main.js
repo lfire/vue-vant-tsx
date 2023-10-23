@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import 'normalize.css';
 import 'vue-tsx-support/enable-check';
 import App from './App';
 import router from './router';

@@ -15,3 +15,15 @@ export const Log = createDecorator((options, key) => {
     originalMethod.apply(this, args);
   };
 });
+
+// declare Debounce decorator.
+export const Debounce = (delay = 300) =>
+  createDecorator((options, key) => {
+    const originalMethod = options.methods[key];
+    options.methods[key] = function wrapperMethod(...args) {
+      clearTimeout(this[`__debounce_${key}`]);
+      this[`__debounce_${key}`] = setTimeout(() => {
+        originalMethod.apply(this, args);
+      }, delay);
+    };
+  });
